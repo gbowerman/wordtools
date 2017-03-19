@@ -16,7 +16,7 @@ More detailed instructions are in-progress..
   2. Install MySQL database server.
   3. Import the worddb database.
   4. Put database user/password details in the dbconfig.json file.
-  5. Run the API server: python3 ./api_layer.py
-  6. Run the presentation layer: python3 ./presentation_layer.py
-  7. Connect to the web UI endpoint, e.g. http://localhost:8080
+  5. Deploy with ./deploy.sh
+  6. Connect to the web UI endpoint, e.g. http://localhost:8080
+  7. Shutdown app with ./killjobs.sh
  
