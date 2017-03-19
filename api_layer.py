@@ -12,7 +12,7 @@ max_words = 200
 
 # Load database details
 try:
-    with open('config.json') as configFile:
+    with open('dbconfig.json') as configFile:
         config_data = json.load(configFile)
 except FileNotFoundError:
     print('Error: Expecting dbconfig.json in current folder')
