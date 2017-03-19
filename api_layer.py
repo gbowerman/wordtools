@@ -76,6 +76,8 @@ def multi_row_query(db, query):
 @get('/anagram/<source_word>')
 def anagram(source_word):
     set_headers()
+
+    # get words of same length which contain at least all the same letters
     query = 'SELECT DISTINCT word FROM words WHERE '
     for letter in source_word:
         query += "word LIKE '%" + letter + "%' AND "
@@ -84,6 +86,8 @@ def anagram(source_word):
     output = multi_row_query(db, query)
     db.close()
     sorted_word = sorted(source_word)
+
+    # now filter out non-anagrams from the list (can happen if there were double letters)
     new_output = []
     for word in output['words']:
         if sorted_word == sorted(word):
