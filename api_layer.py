@@ -73,7 +73,7 @@ def multi_row_query(db, query):
     return output
 
 
-@get('/anagram/<source_word:[a-zA-Z]>')
+@get('/anagram/<source_word:[a-zA-Z]+>')
 def anagram(source_word):
     set_headers()
 
@@ -98,7 +98,7 @@ def anagram(source_word):
 
 
 # word search - to do: use a mask to limit characters
-@get('/finder/<partial_word:[a-zA-Z_%]>')
+@get('/finder/<partial_word:[a-zA-Z_%]+>')
 def finder(partial_word):
     set_headers()
     query = "SELECT word FROM words WHERE word LIKE '" + partial_word + "'"
