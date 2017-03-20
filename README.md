@@ -14,7 +14,7 @@ More detailed instructions are in-progress..
 
   1. Install Python 3.x. with Bottle, pymysql
   2. Install MySQL database server.
-  3. Import the worddb database.
+  3. Import the worddb database. See [worddb](https://github.com/gbowerman/wordtools/tree/master/worddb).
   4. Put database user/password details in the dbconfig.json file.
   5. Deploy with ./deploy.sh
   6. Connect to the web UI endpoint, e.g. http://localhost:8080
