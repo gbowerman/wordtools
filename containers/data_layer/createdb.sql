@@ -7,7 +7,6 @@
 -- DROP DATABASE worddb;
 -- CREATE DATABASE worddb;
 USE worddb;
-SHOW VARIABLES LIKE "secure_file_priv"; 
 CREATE TABLE words(
   word_id INT NOT NULL AUTO_INCREMENT,
   word VARCHAR(60),
@@ -17,6 +16,6 @@ CREATE TABLE words(
 );
 ALTER TABLE words ADD UNIQUE word_idx(word);
 
-LOAD DATA INFILE '/docker-entrypoint-initdb.d/en.csv' INTO TABLE words
+LOAD DATA INFILE '/var/lib/mysql-files/en.csv' INTO TABLE words
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n';
