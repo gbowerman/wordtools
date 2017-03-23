@@ -51,6 +51,13 @@ def random():
     return writebody(body_str)
 
 
+# simple test of layer connectivity
+@route('/test')
+def test():
+    response = requests.get(endpoint + '/test')
+    return response
+
+
 @error(404)
 def mistake404(code):
     return 'Sorry mate, path not found'

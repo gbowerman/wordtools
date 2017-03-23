@@ -1,4 +1,4 @@
-from bottle import error, get, response, run
+from bottle import error, get, response, route, run
 import json
 import pymysql
 from random import randint
@@ -137,6 +137,12 @@ def random(num_words):
         output = multi_row_query(db, query)
     db.close()
     return json.dumps(output)
+
+
+# simple test of layer connectivity
+@route('/test')
+def test():
+    return '<h1>Test successful!</h1>'
 
 
 @error(404)
