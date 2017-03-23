@@ -16,6 +16,6 @@ CREATE TABLE words(
 );
 ALTER TABLE words ADD UNIQUE word_idx(word);
 
-LOAD DATA INFILE './en.csv' INTO TABLE words
+LOAD DATA INFILE '/docker-entrypoint-initdb.d/en.csv' INTO TABLE words
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n';
