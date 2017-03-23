@@ -7,6 +7,7 @@
 -- DROP DATABASE worddb;
 -- CREATE DATABASE worddb;
 USE worddb;
+SHOW VARIABLES LIKE "secure_file_priv"; 
 CREATE TABLE words(
   word_id INT NOT NULL AUTO_INCREMENT,
   word VARCHAR(60),
