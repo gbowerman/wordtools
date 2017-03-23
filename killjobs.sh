@@ -1,2 +1,2 @@
-pkill -f api_layer.py
-pkill -f presentation_layer.py
+# kill running containers
+docker kill $(docker ps -q)
