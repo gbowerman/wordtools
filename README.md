@@ -6,7 +6,7 @@ This app provides web-based word finding tools, and consists of:
 - API layer - providing word search, anagram, random word functions via a REST API, implemented with Python Bottle micro-web framework.
 - Presentation layer - web UI which calls the API layer, also implemented with Bottle.
 
-There are more efficient ways to load and index a dictionary style list of words than to use a database server, but the purpose of this app is to demonstrate a simple micro-service architecture. Each layer is easy to implement as a container, be deployed as a set of inter-related containers in a pod, and scaled horizontally as needed.
+There are more efficient ways to load and index a dictionary style list of words than to use a database server, but the purpose of this app is to demonstrate a simple micro-service architecture. Each layer is implemented as a container, be deployed as a set of inter-related containers in a pod, and scaled horizontally as needed.
 
 ### Installation
 
