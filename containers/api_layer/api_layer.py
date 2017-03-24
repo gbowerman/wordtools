@@ -11,7 +11,7 @@ hostname = '0.0.0.0'
 hostport = 8081
 max_words = 200
 
-dbpasswd = os.environ['MYSQL_PASSWD']
+dbpasswd = os.environ['MYSQL_PASSWORD']
 
 def db_init():
     db = pymysql.connect(host='localhost', db='worddb', user='worduser', passwd=dbpasswd)
