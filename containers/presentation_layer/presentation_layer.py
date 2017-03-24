@@ -10,7 +10,7 @@ endpoint = 'http://localhost:8081'
 
 def process_word_packet(word_packet):
     if word_packet['status'] > 0:
-        body_str = json.dumps(word_packet)
+        body_str = word_packet['message']
     else:
         body_str = ''
         for word in word_packet['words']:
