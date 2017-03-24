@@ -3,10 +3,16 @@ import json
 import requests
 import socket
 
+
 hostname = socket.gethostname()
 #hostname = '0.0.0.0'
 hostport = 8080
 endpoint = 'http://localhost:8081'
+
+last_anag = 'listen'
+last_search = 'am_s_ng'
+last_random = '10'
+
 
 def process_word_packet(word_packet):
     if word_packet['status'] > 0:
@@ -15,8 +21,9 @@ def process_word_packet(word_packet):
         body = word_packet['words']
     return body
 
+
 def writebody(output):
-    return template('base', hostname=hostname, output=output)
+    return template('base', hostname=hostname, output=output, anagram=last_anag, search=last_search, random=last_random)
 
 
 @route('/')
@@ -26,28 +33,34 @@ def root():
 
 @route('/anagram', method='POST')
 def anagram():
+    global last_anag
     anagram = request.forms.get('anagram').lower()
     uri = '/anagram/' + anagram
     word_packet = requests.get(endpoint + uri).json()
     body = process_word_packet(word_packet)
+    last_anag = anagram
     return writebody(body)
 
 
 @route('/finder', method='POST')
 def finder():
+    global last_search
     partial = request.forms.get('partial')
     uri = '/finder/' + partial
     word_packet = requests.get(endpoint + uri).json()
     body = process_word_packet(word_packet)
+    last_search = partial
     return writebody(body)
 
 
 @route('/random', method='POST')
 def random():
+    global last_random
     numberstr = request.forms.get('num')
     uri = '/random/' + numberstr
     word_packet = requests.get(endpoint + uri).json()
     body = process_word_packet(word_packet)
+    last_random = numberstr
     return writebody(body)
 
 
