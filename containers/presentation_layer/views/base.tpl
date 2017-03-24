@@ -64,7 +64,9 @@
 %if output is not None:
     <br/><br/>
     <table border="1"><tr><th>Word(s)</th></tr><tr><td>
-    {{output}}
+    %for word in output:
+        <a href="https://en.wiktionary.org/wiki/{{word}}">{{word}}</a>
+    %end
     </td></tr></table></ul>
 %end
 </body>       
