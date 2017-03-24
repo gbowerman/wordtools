@@ -10,13 +10,14 @@ There are more efficient ways to load and index a dictionary style list of words
 
 ### Installation
 
-More detailed instructions are in-progress..
+Tested on Ubuntu 16.04-LTS VM. 
 
-  1. Install Python 3.x. with Bottle, pymysql
-  2. Install MySQL database server.
-  3. Import the worddb database. See [worddb](https://github.com/gbowerman/wordtools/tree/master/worddb).
-  4. Put database user/password details in the dbconfig.json file.
-  5. Deploy with ./deploy.sh
-  6. Connect to the web UI endpoint, e.g. http://localhost:8080
+  1. Install Python 3.x. 
+  2. Install Docker.
+  3. Clone repo.
+  4. Set $MYSQL_ROOT_PASSWORD and $MYSQL_PASSWORD environment variables.
+  4. Run: bash ./build_containers
+  5. Run: bash ./run_containers
+  6. Connect to the web UI endpoint, e.g. http://yourdns:8080
   7. Shutdown app with ./killjobs.sh
  
