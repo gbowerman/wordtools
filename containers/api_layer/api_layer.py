@@ -105,7 +105,7 @@ def random(num_words):
     output = {'words': [], 'count': 0, 'status': 0}
     if num_words > max_words:
         output['status'] = 8
-        output['message'] = 'Exceeded max words limit (' + max_words + ')'
+        output['message'] = 'Exceeded max words limit (' + str(max_words) + ')'
         return output
 
     # count how many rows
