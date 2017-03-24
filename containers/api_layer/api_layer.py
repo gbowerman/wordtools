@@ -1,5 +1,6 @@
 from bottle import error, get, response, route, run
 import json
+import os
 import pymysql
 from random import randint
 import socket
@@ -10,21 +11,10 @@ hostname = '0.0.0.0'
 hostport = 8081
 max_words = 200
 
-# Load database details
-try:
-    with open('apiconfig.json') as configFile:
-        config_data = json.load(configFile)
-except FileNotFoundError:
-    print('Error: Expecting apiconfig.json in current folder')
-    sys.exit()
-
-dbhost = config_data['dbhost']
-dbuser = config_data['dbuser']
-dbpasswd = config_data['dbpasswd']
-
+dbpasswd = os.environ['MYSQL_PASSWD']
 
 def db_init():
-    db = pymysql.connect(host=dbhost, db='worddb', user=dbuser, passwd=dbpasswd)
+    db = pymysql.connect(host='localhost', db='worddb', user='worduser', passwd=dbpasswd)
     return db
 
 
