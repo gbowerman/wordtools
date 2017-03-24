@@ -24,7 +24,7 @@ def set_headers():
     response.headers['Cache-Control'] = 'no-cache'
 
 
-# fetch a single row and return curos
+# fetch a single row and return cursor
 def single_row_query(db, query):
     try:
         with db.cursor() as cursor:
@@ -59,7 +59,6 @@ def multi_row_query(db, query):
     except Exception as e:
         output['status'] = 7
         output['message'] = str(e)
-        return None
     return output
 
 
@@ -133,7 +132,7 @@ def random(num_words):
 # simple test of layer connectivity
 @route('/test')
 def test():
-    output = {'words': ['API layer test-successful'], 'count': 1, 'status': 0}
+    output = {'words': ['API layer test successful'], 'count': 1, 'status': 0}
     return output
 
 
