@@ -59,6 +59,13 @@ def test():
     return '<h1>Presentation layer operational</h1>'
 
 
+# simple test of API container
+@route('/apitest')
+def apitest():
+    word_packet = requests.get(endpoint + '/test').json()
+    return word_packet['words']
+
+
 @error(404)
 def mistake404(code):
     return 'Sorry mate, 404 - path not found.'

@@ -133,7 +133,7 @@ def random(num_words):
 # simple test of layer connectivity
 @route('/test')
 def test():
-    return '<h1>Test successful!</h1>'
+    output = {'words': ['API layer test-successful'], 'count': 1, 'status': 0}
 
 
 @error(404)
