@@ -10,12 +10,10 @@ endpoint = 'http://localhost:8081'
 
 def process_word_packet(word_packet):
     if word_packet['status'] > 0:
-        body_str = word_packet['message']
+        body = word_packet['message'].split()
     else:
-        body_str = ''
-        for word in word_packet['words']:
-            body_str += word + ' '
-    return body_str
+        body = word_packet['words']
+    return body
 
 def writebody(output):
     return template('base', hostname=hostname, output=output)
@@ -31,8 +29,8 @@ def anagram():
     anagram = request.forms.get('anagram').lower()
     uri = '/anagram/' + anagram
     word_packet = requests.get(endpoint + uri).json()
-    body_str = process_word_packet(word_packet)
-    return writebody(body_str)
+    body = process_word_packet(word_packet)
+    return writebody(body)
 
 
 @route('/finder', method='POST')
@@ -40,8 +38,8 @@ def finder():
     partial = request.forms.get('partial')
     uri = '/finder/' + partial
     word_packet = requests.get(endpoint + uri).json()
-    body_str = process_word_packet(word_packet)
-    return writebody(body_str)
+    body = process_word_packet(word_packet)
+    return writebody(body)
 
 
 @route('/random', method='POST')
@@ -49,8 +47,8 @@ def random():
     numberstr = request.forms.get('num')
     uri = '/random/' + numberstr
     word_packet = requests.get(endpoint + uri).json()
-    body_str = process_word_packet(word_packet)
-    return writebody(body_str)
+    body = process_word_packet(word_packet)
+    return writebody(body)
 
 
 # simple test of presentation container
