@@ -56,7 +56,7 @@ def random():
 # simple test of layer connectivity
 @route('/test')
 def test():
-    response = requests.get(endpoint + '/test')
+    response = requests.get(endpoint + '/test').text()
     return 'Test call to the API layer returned: ' + response
 
 

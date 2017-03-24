@@ -127,7 +127,7 @@ def random(num_words):
         query = 'SELECT word FROM words WHERE word_id IN ' + int_set
         output = multi_row_query(db, query)
     db.close()
-    return json.dumps(output)
+    return output
 
 
 # simple test of layer connectivity
