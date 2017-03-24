@@ -33,7 +33,7 @@
      <table>
       <form method="post" action="/finder">
        <tr>
-        <td>e.g. 'cr_pt_c', 'cat%'.</td>
+        <td>e.g. 'cr_pt_c', 'catas%'.</td>
         <td valign="top"><input type="text" name="partial" size="20" value=am_s_ng></td>
         <td align="right" valign="top"><input type="submit" name="submit" value="Find"></td>
        </tr>

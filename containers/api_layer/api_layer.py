@@ -13,6 +13,7 @@ max_words = 200
 
 dbpasswd = os.environ['MYSQL_PASSWORD']
 
+
 def db_init():
     db = pymysql.connect(host='localhost', db='worddb', user='worduser', passwd=dbpasswd)
     return db
@@ -43,12 +44,11 @@ def multi_row_query(db, query):
             cursor.execute(query)
             # first check how many words come back
             if cursor.rowcount > max_words:
-                output['status'] = -1
-                output['message'] = 'Exceeded max words limit (' + str(
-                    max_words) + ')'
+                output['status'] = 5
+                output['message'] = 'Exceeded max words limit (' + str(max_words) + ')'
                 return output
             if cursor.rowcount < 1:
-                output['status'] = -1
+                output['status'] = 6
                 output['message'] = 'No words returned'
                 return output
             words = cursor.fetchall()
@@ -57,7 +57,7 @@ def multi_row_query(db, query):
                 output['words'].append(word[0])
 
     except Exception as e:
-        output['status'] = -1
+        output['status'] = 7
         output['message'] = str(e)
         return None
     return output
@@ -77,7 +77,8 @@ def anagram(source_word):
     db.close()
     sorted_word = sorted(source_word)
 
-    # now filter out non-anagrams from the list (can happen if there were double letters)
+    # now filter out non-anagrams from the list (can happen if there were
+    # double letters)
     new_output = []
     for word in output['words']:
         if sorted_word == sorted(word):
@@ -103,7 +104,7 @@ def random(num_words):
     set_headers()
     output = {'words': [], 'count': 0, 'status': 0}
     if num_words > max_words:
-        output['status'] = -1
+        output['status'] = 8
         output['message'] = 'Exceeded max words limit (' + max_words + ')'
         return output
 
@@ -112,7 +113,7 @@ def random(num_words):
     db = db_init()
     numrows = single_row_query(db, query)
     if numrows is None or numrows < 1:
-        output['status'] = -1
+        output['status'] = 9
         output['message'] = 'Empty table or database connectivity error'
     else:
         int_set = '('
@@ -138,7 +139,7 @@ def test():
 @error(404)
 def mistake404(code):
     set_headers()
-    output = {'words': [], 'count': 0, 'status': -1,
+    output = {'words': [], 'count': 0, 'status': 1,
               'message': '404: Sorry mate, path not found'}
     return output
 
@@ -146,8 +147,16 @@ def mistake404(code):
 @error(405)
 def mistake405(code):
     set_headers()
-    output = {'words': [], 'count': 0, 'status': -
-              1, 'message': '405: Invalid arguments'}
+    output = {'words': [], 'count': 0, 'status': 2,
+              'message': '405: Invalid arguments'}
+    return output
+
+
+@error(500)
+def mistake500(code):
+    set_headers()
+    output = {'words': [], 'count': 0, 'status': 3,
+              'message': '500: Internal Server Error'}
     return output
 
 
