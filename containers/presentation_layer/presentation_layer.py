@@ -53,11 +53,10 @@ def random():
     return writebody(body_str)
 
 
-# simple test of layer connectivity
+# simple test of presentation container
 @route('/test')
 def test():
-    response = requests.get(endpoint + '/test').text()
-    return 'Test call to the API layer returned: ' + response
+    return '<h1>Presentation layer operational</h1>'
 
 
 @error(404)
