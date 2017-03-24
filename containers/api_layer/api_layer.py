@@ -134,6 +134,7 @@ def random(num_words):
 @route('/test')
 def test():
     output = {'words': ['API layer test-successful'], 'count': 1, 'status': 0}
+    return output
 
 
 @error(404)
