@@ -15,7 +15,7 @@ Tested on an Ubuntu 16.04-LTS VM.
   1. Install Python 3.x. 
   2. Install Docker.
   3. Clone repo or just copy the docker-compose.yaml file if you don't plan to build the containers.
-  4. Set $MYSQL_ROOT_PASSWORD $MYSQL_DATABASE, $MYSQL_USER and $MYSQL_PASSWORD environment variables.
+  4. Set $MYSQL_ROOT_PASSWORD $MYSQL_DATABASE, $MYSQL_USER and $MYSQL_PASSWORD environment variables (use setenv.sh.tmlp as a template).
       export MYSQL_DATABASE=worddb
       export MYSQL_USER=worduser
       export MYSQL_PASSWORD=set-your-password-here

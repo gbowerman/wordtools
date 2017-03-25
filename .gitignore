@@ -1,5 +1,5 @@
 # Application files
-dbconfig.json
+setenv.sh
 
 # Python cache
 __pycache__
