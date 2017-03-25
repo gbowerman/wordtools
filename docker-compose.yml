@@ -13,6 +13,7 @@ wordtools_api:
      - "8081:8081"
   environment:
      - MYSQL_PASSWORD
+     - MYSQL_ROOT_PASSWORD
   links:
      - wordtools_data:wordtools-data
 wordtools_presentation:
