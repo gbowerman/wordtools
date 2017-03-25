@@ -12,11 +12,13 @@ dbhost='wordtools-data' # name of the database server container, linked by compo
 hostport = 8081
 max_words = 200
 
-dbpasswd = os.environ['MYSQL_PASSWORD']
+# dbpasswd = os.environ['MYSQL_PASSWORD']
+dbpasswd = os.environ['MYSQL_ROOT_PASSWORD']
+dbuser = 'root'
 
 
 def db_init():
-    db = pymysql.connect(host=dbhost, db='worddb', user='worduser', passwd=dbpasswd)
+    db = pymysql.connect(host=dbhost, db='worddb', user=dbuser, passwd=dbpasswd)
     return db
 
 
