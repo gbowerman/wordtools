@@ -6,8 +6,6 @@
 -- dbconfig.json file used by the word tools app. Example below assumes 'worduser'.
 -- DROP DATABASE worddb;
 -- CREATE DATABASE worddb;
-update user set host=’%’ where user=’root’;
-update user set host=’%’ where user=’worduser’;
 flush privileges;
 USE worddb;
 CREATE TABLE words(

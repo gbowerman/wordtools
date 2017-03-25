@@ -13,8 +13,8 @@ hostport = 8081
 max_words = 200
 
 # dbpasswd = os.environ['MYSQL_PASSWORD']
-dbpasswd = os.environ['MYSQL_ROOT_PASSWORD']
-dbuser = 'root'
+dbpasswd = os.environ['MYSQL_PASSWORD']
+dbuser = 'worduser'
 
 
 def db_init():
