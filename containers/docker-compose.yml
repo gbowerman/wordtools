@@ -14,11 +14,11 @@ wordtools_api:
   environment:
      - MYSQL_PASSWORD
   links:
-     - wordtools_data
+     - wordtools_data:wordtools-data
 wordtools_presentation:
   image: sendmarsh/wordtools_presentation
   container_name: wordtools_presentation
   ports:
      - "8080:8080"
   links:
-     - wordtools_api
+     - wordtools_api:wordtools-api
