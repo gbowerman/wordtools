@@ -1,0 +1,19 @@
+wordtools_data:
+  container_name: sendmarsh/wordtools_data
+  ports:
+     - "3306:3306"
+  environment:
+     - MYSQL_ROOT_PASSWORD
+     - MYSQL_PASSWORD
+wordtools_api:
+  container_name: sendmarsh/wordtools_api
+  ports:
+     - "8081:8081"
+  links:
+     - wordtools_data
+wordtools_presentation:
+  container_name: sendmarsh/wordtools_presentation
+  ports:
+     - "8080:8080"
+  links:
+     - wordtools_api
