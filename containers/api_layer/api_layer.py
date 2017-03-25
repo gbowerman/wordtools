@@ -8,7 +8,7 @@ import sys
 
 #hostname = socket.gethostname()
 hostname = '0.0.0.0'
-dbhost='wordtools_data' # name of the database server container, linked by compose file
+dbhost='localhost' # name of the database server container, linked by compose file
 hostport = 8081
 max_words = 200
 

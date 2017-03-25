@@ -8,3 +8,7 @@ docker build -t sendmarsh/wordtools_api .
 cd ../presentation_layer
 docker build -t sendmarsh/wordtools_presentation .
 cd ../..
+# push the containers 
+docker push sendmarsh/wordtools_data
+docker push sendmarsh/wordtools_api
+docker push sendmarsh/wordtools_presentation

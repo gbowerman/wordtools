@@ -7,7 +7,7 @@ import socket
 hostname = socket.gethostname()
 #hostname = '0.0.0.0'
 hostport = 8080
-endpoint = 'http://wordtools_api:8081'  # api layer host/port set in compose file
+endpoint = 'http://localhost:8081'  # api layer host/port set in compose file
 
 last_anag = 'listen'
 last_search = 'am_s_ng'
