@@ -6,4 +6,3 @@
 curl https://raw.githubusercontent.com/atebits/Words/master/Words/en.txt > en.txt
 python3 ./line2csv.py en.txt > en.csv
 rm en.txt
-echo "CREATE USER 'worduser'@'%' IDENTIFIED BY '"$MYSQL_PASSWORD"'; GRANT USAGE ON worddb.* TO 'worduser'@'%';" >> createdb.sql
