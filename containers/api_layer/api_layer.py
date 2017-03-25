@@ -16,7 +16,7 @@ dbpasswd = os.environ['MYSQL_PASSWORD']
 
 
 def db_init():
-    db = pymysql.connect(host='dbhost', db='worddb', user='worduser', passwd=dbpasswd)
+    db = pymysql.connect(host=dbhost, db='worddb', user='worduser', passwd=dbpasswd)
     return db
 
 
