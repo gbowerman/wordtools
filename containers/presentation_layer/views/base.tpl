@@ -68,5 +68,8 @@
         <a href="https://en.wiktionary.org/wiki/{{word}}">{{word}}</a>
     %end
     </td></tr></table></ul>
+%else:
+    <br/><br/><br/><br/></br>
+    <a href="/test">Presentation layer test</a> - <a href="/apitest">API layer test</a>.
 %end
 </body>       

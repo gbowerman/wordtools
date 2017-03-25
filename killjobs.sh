@@ -1,2 +1,2 @@
 # kill running containers
-docker kill $(docker ps -q)
+docker-compose stop

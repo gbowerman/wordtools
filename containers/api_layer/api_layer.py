@@ -14,7 +14,7 @@ max_words = 200
 
 # dbpasswd = os.environ['MYSQL_PASSWORD']
 dbpasswd = os.environ['MYSQL_PASSWORD']
-dbuser = 'worduser'
+dbuser = os.environ['MYSQL_USER']
 
 
 def db_init():
