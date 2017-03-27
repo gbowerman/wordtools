@@ -1,6 +1,6 @@
-wordtools_data:
-  image: sendmarsh/wordtools_data
-  container_name: wordtools_data
+wordtools-data:
+  image: sendmarsh/wordtools-data
+  container_name: wordtools-data
   ports:
      - "3306:3306"
   environment:
@@ -8,20 +8,20 @@ wordtools_data:
      - MYSQL_USER
      - MYSQL_ROOT_PASSWORD
      - MYSQL_PASSWORD
-wordtools_api:
-  image: sendmarsh/wordtools_api
-  container_name: wordtools_api
+wordtools-api:
+  image: sendmarsh/wordtools-api
+  container_name: wordtools-api
   ports:
      - "8081:8081"
   environment:
      - MYSQL_USER
      - MYSQL_PASSWORD
   links:
-     - wordtools_data:wordtools-data
-wordtools_presentation:
-  image: sendmarsh/wordtools_presentation
-  container_name: wordtools_presentation
+     - wordtools-data:wordtools-data
+wordtools-presentation:
+  image: sendmarsh/wordtools-presentation
+  container_name: wordtools-presentation
   ports:
      - "8080:8080"
   links:
-     - wordtools_api:wordtools-api
+     - wordtools-api:wordtools-api

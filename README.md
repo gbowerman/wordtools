@@ -27,4 +27,39 @@ Tested on an Ubuntu 16.04-LTS VM.
   5. Run: docker-compose up -d
   6. Connect to the web UI endpoint, e.g. http://yourvmdns:8080
   7. Shutdown app with: docker-compose stop
+
+ ### Converting to a Kubernetes cluster on Azure
+1. Install [Azure CLI](https://github.com/Azure/azure-cli)
+2. Set up CLI environment: az login
+3. Create a resource group and a kubernetes ACS cluster e.g.
+```
+az group create -n yourk8rg --location northeurope
+az acs create -n yourk8clust -g yourk8rg --orchestrator-type=kubernetes 	--generate-ssh-key  --dns-prefix=a-unique-dns-prefix
+```
+4. Make a local copy of the Kubernetes configuration:
+```
+az acs kubernetes get-credentials -g yourk8rg -n yourk8clus
+cp ~/.kube/config .
+export KUBECONFIG=`pwd`/config
+```
+5. Install kompose:
+  ```
+  curl -L https://github.com/kubernetes-incubator/kompose/releases/download/v0.2.0/kompose-linux-amd64 -o kompose
+  chmod +x kompose
+  sudo mv ./kompose /usr/local/bin/kompose
+ ```
+ 6. Do a simple conversion to kubernetes pods:
+ ```
+ . ./setenv.sh # set runtime environement variables
+ kompose --file ./docker-compose.yml up
+ ```
+In the spec replace the type to LoadBalancer
+ 7. Edit the cluster config file to load balance from an external IP address.
+ ```
+ kubectl edit svc/wordtools-presentation
+ ```
+
+ Then a few minutes later editing the file again will show it has a public IP address you can browse to.
+
+
  
