@@ -64,7 +64,6 @@ def random():
     uri = '/random/' + numberstr + '/' + length
     #uri = '/random/' + numberstr
     status = ' URI = ' + uri
-    return uri
     word_packet = requests.get(endpoint + uri).json()
     body = process_word_packet(word_packet)
     last_random = numberstr
