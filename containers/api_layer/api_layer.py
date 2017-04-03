@@ -106,7 +106,9 @@ def random(path):
     set_headers()
     output = {'words': [], 'count': 0, 'status': 0}
 
-    print(path)
+    output['status'] = 8
+    output['message'] = 'Path is ' + path
+    return output
     if path.isdigit():
         num_words = int(path)
         length = 0 # zero length means don't care about word length
