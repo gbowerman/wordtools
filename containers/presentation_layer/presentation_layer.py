@@ -60,8 +60,9 @@ def finder():
 def random():
     global last_random
     numberstr = request.forms.get('num')
-    length = request.forms.get('len')
-    uri = '/random/' + numberstr + '/' + length
+    #length = request.forms.get('len')
+    #uri = '/random/' + numberstr + '/' + length
+    uri = '/random/' + numberstr
     status = ' URI = ' + uri
     word_packet = requests.get(endpoint + uri).json()
     body = process_word_packet(word_packet)
