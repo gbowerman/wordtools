@@ -101,7 +101,7 @@ def finder(partial_word):
     return output
 
 
-@get('/random/<path:paths>')
+@get('/random/<path:path>')
 def random(path):
     set_headers()
     output = {'words': [], 'count': 0, 'status': 0}
