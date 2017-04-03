@@ -112,8 +112,8 @@ def random(random_options):
     else:
         options = random_options.split('/')
         num_words = int(options[0])
-        length = int(options[1)]
-
+        length = int(options[1])
+        
     if num_words > max_words:
         output['status'] = 8
         output['message'] = 'Exceeded max words limit (' + str(max_words) + ')'
