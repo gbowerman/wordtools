@@ -107,7 +107,7 @@ def random(path):
     output = {'words': [], 'count': 0, 'status': 0}
 
     output['status'] = 8
-    output['message'] = 'Path is ' + path
+    output['message'] = 'Path is called'
     return output
     if path.isdigit():
         num_words = int(path)
@@ -162,7 +162,7 @@ def test():
 def mistake404(code):
     set_headers()
     output = {'words': [], 'count': 0, 'status': 1,
-              'message': '404: Sorry mate, path not found'}
+              'message': '404 Sorry mate path not found'}
     return output
 
 
@@ -170,7 +170,7 @@ def mistake404(code):
 def mistake405(code):
     set_headers()
     output = {'words': [], 'count': 0, 'status': 2,
-              'message': '405: Invalid arguments'}
+              'message': '405 Invalid arguments'}
     return output
 
 
@@ -178,7 +178,7 @@ def mistake405(code):
 def mistake500(code):
     set_headers()
     output = {'words': [], 'count': 0, 'status': 3,
-              'message': '500: Internal Server Error'}
+              'message': '500 Internal Server Error'}
     return output
 
 
