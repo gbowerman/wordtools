@@ -12,6 +12,7 @@ endpoint = 'http://wordtools-api:8081'  # api layer host/port set in compose fil
 last_anag = 'listen'
 last_search = 'am_s_ng'
 last_random = '10'
+status = ''
 
 
 def process_word_packet(word_packet):
@@ -36,6 +37,7 @@ def anagram():
     global last_anag
     anagram = request.forms.get('anagram').lower()
     uri = '/anagram/' + anagram
+    status = ' URI = ' + uri
     word_packet = requests.get(endpoint + uri).json()
     body = process_word_packet(word_packet)
     last_anag = anagram
@@ -47,6 +49,7 @@ def finder():
     global last_search
     partial = request.forms.get('partial')
     uri = '/finder/' + partial
+    status = ' URI = ' + uri
     word_packet = requests.get(endpoint + uri).json()
     body = process_word_packet(word_packet)
     last_search = partial
@@ -59,6 +62,7 @@ def random():
     numberstr = request.forms.get('num')
     length = request.forms.get('len')
     uri = '/random/' + numberstr + '/' + length
+    status = ' URI = ' + uri
     word_packet = requests.get(endpoint + uri).json()
     body = process_word_packet(word_packet)
     last_random = numberstr
@@ -90,6 +94,6 @@ def mistake405(code):
 
 @error(500)
 def mistake500(code):
-    return '500 - Returning error from presentation layer.'
+    return '500 - Returning error from presentation layer.' + status
 
 run(host=hostname, port=hostport)
