@@ -92,9 +92,9 @@ def mistake404(code):
 def mistake405(code):
     return '405 - Invalid arguments to form.'
 
-
+'''
 @error(500)
 def mistake500(code):
     return '500 - Returning error from presentation layer.' + status
-
+'''
 run(host=hostname, port=hostport)
