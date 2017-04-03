@@ -112,6 +112,10 @@ def random(path):
         length = 0 # zero length means don't care about word length
     else:
         options = path.split('/')
+        if options[0].isdigit() is False:
+            output['status'] = 8
+            output['message'] = 'Execting a number, got (' + options[0] + ')'
+            return output
         num_words = int(options[0])
         length = int(options[1])
         
