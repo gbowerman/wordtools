@@ -101,33 +101,45 @@ def finder(partial_word):
     return output
 
 
-@get('/random/<num_words:int>')
-def random(num_words):
+@get('/random/<path:random_options>')
+def random(random_options):
     set_headers()
     output = {'words': [], 'count': 0, 'status': 0}
+
+    if random_options.isdigit():
+        num_words = int(random_options)
+        length = 0 # zero length means don't care about word length
+    else:
+        options = random_options.split('/')
+        num_words = int(options[0])
+        length = int(options[1)]
+
     if num_words > max_words:
         output['status'] = 8
         output['message'] = 'Exceeded max words limit (' + str(max_words) + ')'
         return output
+    
+    if length == 0:
+        # count how many rows
+        query = 'SELECT count(word) FROM words;'
+        db = db_init()
+        numrows = single_row_query(db, query)
+        if numrows is None or numrows < 1:
+            output['status'] = 9
+            output['message'] = 'Empty table or database connectivity error'
+        else:
+            int_set = '('
+            # build a set of random numbers between 1 and numrows
+            for x in range(num_words):
+                random_int = randint(1, numrows)
+                int_set += str(random_int) + ','
+            int_set = int_set[:-1] + ')'
 
-    # count how many rows
-    query = 'SELECT count(word) FROM words;'
-    db = db_init()
-    numrows = single_row_query(db, query)
-    if numrows is None or numrows < 1:
-        output['status'] = 9
-        output['message'] = 'Empty table or database connectivity error'
+            # query words matching the random row numbers
+            query = 'SELECT word FROM words WHERE word_id IN ' + int_set
     else:
-        int_set = '('
-        # build a set of random numbers between 1 and numrows
-        for x in range(num_words):
-            random_int = randint(1, numrows)
-            int_set += str(random_int) + ','
-        int_set = int_set[:-1] + ')'
-
-        # query words matching the random row numbers
-        query = 'SELECT word FROM words WHERE word_id IN ' + int_set
-        output = multi_row_query(db, query)
+        query = 'SELECT word FROM words WHERE length = ' + str(length) + ' order by rand() limit ' + str(num_words)
+    output = multi_row_query(db, query)
     db.close()
     return output
 
