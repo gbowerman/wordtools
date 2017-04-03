@@ -120,10 +120,10 @@ def random(path):
         output['message'] = 'Exceeded max words limit (' + str(max_words) + ')'
         return output
     
+    db = db_init()
     if length == 0:
         # count how many rows
         query = 'SELECT count(word) FROM words;'
-        db = db_init()
         numrows = single_row_query(db, query)
         if numrows is None or numrows < 1:
             output['status'] = 9
