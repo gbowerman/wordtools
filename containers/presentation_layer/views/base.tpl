@@ -34,7 +34,7 @@
       <form method="post" action="/randomfixed">
         <tr>
          <td>Length</td>
-         <td><input type="text" size="2" name="length" value="5"></td>
+         <td><input type="text" size="2" name="wordlen" value="5"></td>
          <td align="right"><input type="submit" value="Generate"></td>
         </tr>
       </form>

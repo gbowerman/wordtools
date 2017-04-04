@@ -69,8 +69,8 @@ def random():
 @route('/randomfixed', method='POST')
 def random():
     global last_random
-    length = request.forms.get('length')
-    uri = '/randomfixed/' + length
+    wordlen = request.forms.get('wordlen')
+    uri = '/randomfixed/' + wordlen
     word_packet = requests.get(endpoint + uri).json()
     body = process_word_packet(word_packet)
     last_random = numberstr
