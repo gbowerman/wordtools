@@ -41,7 +41,7 @@ def single_row_query(db, query):
 
 # fetch multiple rows and return JSON output object
 def multi_row_query(db, query):
-    output = {'words': [], 'count': 0, 'status': 0}
+    output = {'words': ['hello'], 'count': 1, 'status': 0}
     try:
         with db.cursor() as cursor:
             cursor.execute(query)
@@ -140,7 +140,6 @@ def random(num_words_str):
 @get('/randomfixed/<length_str>')
 def randomfixed(length_str):
     set_headers()
-    output = {'words': [], 'count': 0, 'status': 0}
 
     num_words = '10'
     length = int(length_str)
