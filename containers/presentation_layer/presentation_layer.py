@@ -50,8 +50,8 @@ def finder():
     partial = request.forms.get('partial')
     uri = '/finder/' + partial
     status = ' URI = ' + uri
-    word_packet = requests.get(endpoint + uri).json()
-    body = process_word_packet(word_packet)
+    word_packet = requests.get(endpoint + uri).text
+    body = process_word_packet(json.loads(word_packet))
     last_search = partial
     return writebody(body)
 
@@ -63,7 +63,6 @@ def random():
     length = request.forms.get('length')
     uri = '/random/' + numberstr + '/' + length
     #uri = '/random/' + numberstr
-    status = ' URI = ' + uri
     #word_packet = requests.get(endpoint + uri).json()
     word_packet = requests.get(endpoint + uri).json()
     body = process_word_packet(word_packet)

@@ -8,7 +8,7 @@ import sys
 
 #hostname = socket.gethostname()
 hostname = '0.0.0.0'
-dbhost='wordtools-data' # name of the database server container, linked by compose file
+dbhost = 'wordtools-data' # name of the database server container, linked by compose file
 hostport = 8081
 max_words = 200
 
@@ -39,7 +39,7 @@ def single_row_query(db, query):
     return row_data
 
 
-# fetch multiple roles and return JSON output object
+# fetch multiple rows and return JSON output object
 def multi_row_query(db, query):
     output = {'words': [], 'count': 0, 'status': 0}
     try:
@@ -108,12 +108,12 @@ def random(num_words_str, length_str):
 
     num_words = int(num_words_str)
     length = int(length_str) # zero length means don't care about word length
-        
+
     if num_words > max_words:
         output['status'] = 8
         output['message'] = 'Exceeded max words limit (' + str(max_words) + ')'
         return output
-    
+
     db = db_init()
     if length == 0:
         # count how many rows
