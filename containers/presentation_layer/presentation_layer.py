@@ -60,12 +60,12 @@ def finder():
 def random():
     global last_random
     numberstr = request.forms.get('num')
-    length = request.forms.get('len')
+    length = request.forms.get('length')
     uri = '/random/' + numberstr + '/' + length
     #uri = '/random/' + numberstr
     status = ' URI = ' + uri
     #word_packet = requests.get(endpoint + uri).json()
-    word_packet = requests.get(endpoint + uri).text
+    word_packet = requests.get(endpoint + uri).json()
     body = process_word_packet(word_packet)
     last_random = numberstr
     return writebody(body)
