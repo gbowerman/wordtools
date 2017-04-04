@@ -140,8 +140,7 @@ def random(num_words_str):
 @get('/randomfixed/<length_str>')
 def randomfixed(length_str):
     set_headers()
-    output = {'words': ['hello'], 'count': 1, 'status': 0}
-    return output
+    output = {'words': [], 'count': 0, 'status': 0}
 
     num_words = '10'
     length = int(length_str)
