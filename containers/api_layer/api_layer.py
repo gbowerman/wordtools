@@ -101,7 +101,7 @@ def finder(partial_word):
     return output
 
 
-@get('/random/<num_words>/<length>')
+@get('/random/<num_words_str>/<length_str>')
 def random(num_words_str, length_str):
     set_headers()
     output = {'words': [], 'count': 0, 'status': 0}
