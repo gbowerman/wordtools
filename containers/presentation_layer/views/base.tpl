@@ -37,7 +37,7 @@
          <td>Number</td>
          <td><input type="text" size="2" name="num" value={{random}}></td>
          <td>Length</td>
-         <td><input type="text" name="len" value="5"/></td>
+         <td><input type="text" size="2" name="len" value="5"></td>
          <td align="right"><input type="submit" value="Generate"></td>
         </tr>
       </form>
