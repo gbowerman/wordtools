@@ -73,7 +73,6 @@ def random():
     uri = '/randomfixed/' + wordlen
     word_packet = requests.get(endpoint + uri).json()
     body = process_word_packet(word_packet)
-    last_random = numberstr
     return writebody(body)
 
 
