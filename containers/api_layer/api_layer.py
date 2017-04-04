@@ -140,14 +140,15 @@ def random(num_words_str):
 @get('/randomfixed/<length_str>')
 def randomfixed(length_str):
     set_headers()
-    output = {'words': [], 'count': 0, 'status': 0}
+    output = {'words': ['hello'], 'count': 1, 'status': 0}
+    return output
 
-    num_words = 10
+    num_words = '10'
     length = int(length_str)
 
     db = db_init()
     query = 'SELECT word FROM words WHERE length = ' + str(length) + ' order by rand() limit ' \
-        + str(num_words)
+        + num_words
     output = multi_row_query(db, query)
     db.close()
     return output
