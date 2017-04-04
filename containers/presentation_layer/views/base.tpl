@@ -35,7 +35,7 @@
         <tr>
          <td>Length</td>
          <td><input type="text" size="2" name="wordlen" value="5"></td>
-         <td align="right"><input type="submit" value="Generate"></td>
+         <td align="right"><input type="submit" value="Fetch"></td>
         </tr>
       </form>
       </table>
