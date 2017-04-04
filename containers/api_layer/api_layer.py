@@ -133,7 +133,7 @@ def random(num_words_str, length_str):
             # query words matching the random row numbers
             query = 'SELECT word FROM words WHERE word_id IN ' + int_set
     else:
-        query = 'SELECT word FROM words WHERE length = ' + str(length) + ' order by rand() limit ' + str(num_words)
+        query = 'SELECT word FROM words WHERE length = ' + length_str + ' order by rand() limit ' + num_words_str
     output = multi_row_query(db, query)
     db.close()
     return output
