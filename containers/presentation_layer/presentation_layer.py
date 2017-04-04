@@ -60,10 +60,17 @@ def finder():
 def random():
     global last_random
     numberstr = request.forms.get('num')
+    uri = '/random/' + numberstr
+    word_packet = requests.get(endpoint + uri).json()
+    body = process_word_packet(word_packet)
+    last_random = numberstr
+    return writebody(body)
+
+@route('/randomfixed', method='POST')
+def random():
+    global last_random
     length = request.forms.get('length')
-    uri = '/random/' + numberstr + '/' + length
-    #uri = '/random/' + numberstr
-    #word_packet = requests.get(endpoint + uri).json()
+    uri = '/randomfixed/' + length
     word_packet = requests.get(endpoint + uri).json()
     body = process_word_packet(word_packet)
     last_random = numberstr

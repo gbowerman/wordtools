@@ -16,8 +16,7 @@
       <form method="post" action="/random">
         <tr>
          <td>Number</td>
-         <td><input type="text" size="2" name="num" value={{random}}>
-             <input type="hidden" name="length" value="0"></td>
+         <td><input type="text" size="2" name="num" value={{random}}></td>
          <td align="right"><input type="submit" value="Generate"></td>
         </tr>
       </form>
@@ -32,10 +31,8 @@
     <tr>
      <td>
       <table>
-      <form method="post" action="/random">
+      <form method="post" action="/randomfixed">
         <tr>
-         <td>Number</td>
-         <td><input type="text" size="2" name="num" value={{random}}></td>
          <td>Length</td>
          <td><input type="text" size="2" name="length" value="5"></td>
          <td align="right"><input type="submit" value="Generate"></td>
