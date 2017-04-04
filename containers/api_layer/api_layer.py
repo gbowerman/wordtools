@@ -107,7 +107,7 @@ def random(num_words_str, length_str):
     output = {'words': [], 'count': 0, 'status': 0}
 
     num_words = int(num_words_str)
-    length = int(length_Str) # zero length means don't care about word length
+    length = int(length_str) # zero length means don't care about word length
         
     if num_words > max_words:
         output['status'] = 8
