@@ -161,24 +161,21 @@ def test():
 
 @error(404)
 def mistake404(code):
-    set_headers()
-    output = {'words': [], 'count': 0, 'status': 1,
+    output = {'words': ['404 Sorry mate path not found'], 'count': 1, 'status': 1,
               'message': '404 Sorry mate path not found'}
     return output
 
 
 @error(405)
 def mistake405(code):
-    set_headers()
-    output = {'words': [], 'count': 0, 'status': 2,
+    output = {'words': ['405 Invalid arguments'], 'count': 1, 'status': 2,
               'message': '405 Invalid arguments'}
     return output
 
 
 @error(500)
 def mistake500(code):
-    set_headers()
-    output = {'words': [], 'count': 0, 'status': 3,
+    output = {'words': ['500 Internal Server Error'], 'count': 1, 'status': 3,
               'message': '500 Internal Server Error'}
     return output
 
