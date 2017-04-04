@@ -101,22 +101,13 @@ def finder(partial_word):
     return output
 
 
-@get('/random/<path:path>')
-def random(path):
+@get('/random/<num_words>/<length>')
+def random(num_words_str, length_str):
     set_headers()
     output = {'words': [], 'count': 0, 'status': 0}
 
-    if path.isdigit():
-        num_words = int(path)
-        length = 0 # zero length means don't care about word length
-    else:
-        options = path.split('/')
-        if options[0].isdigit() is False:
-            output['status'] = 8
-            output['message'] = 'Execting a number, got (' + options[0] + ')'
-            return output
-        num_words = int(options[0])
-        length = int(options[1])
+    num_words = int(num_words_str)
+    length = int(length_Str) # zero length means don't care about word length
         
     if num_words > max_words:
         output['status'] = 8
