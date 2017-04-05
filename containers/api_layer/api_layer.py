@@ -139,27 +139,22 @@ def randomfixed(num_words_str):
     return output
 
 '''
-@get('/randomfixed/<length_str>')
-def randomfixed(length_str):
+@get('/randomfixed/<num_words:int>/<length:int>')
+def randomfixed(num_words, length):
     set_headers()
-
-    num_words = '10'
-    length = int(length_str)
 
     db = db_init()
     query = 'SELECT word FROM words WHERE length = ' + str(length) + ' order by rand() limit ' \
-        + num_words
+        + str(num_words)
     output = multi_row_query(db, query)
     db.close()
     return output
 
 
-@get('/random/<num_words_str>')
-def random(num_words_str):
+@get('/random/<num_words:int>')
+def random(num_words):
     set_headers()
     output = {'words': [], 'count': 0, 'status': 0}
-
-    num_words = int(num_words_str)
 
     if num_words > max_words:
         output['status'] = 8
