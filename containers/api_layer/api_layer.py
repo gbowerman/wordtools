@@ -41,7 +41,7 @@ def single_row_query(db, query):
 
 # fetch multiple rows and return JSON output object
 def multi_row_query(db, query):
-    output = {'words': ['hello'], 'count': 1, 'status': 0}
+    output = {'words': [], 'count': 0, 'status': 0}
     try:
         with db.cursor() as cursor:
             cursor.execute(query)
