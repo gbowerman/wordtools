@@ -101,41 +101,6 @@ def finder(partial_word):
     return output
 
 
-@get('/random/<num_words_str>')
-def random(num_words_str):
-    set_headers()
-    output = {'words': [], 'count': 0, 'status': 0}
-
-    num_words = int(num_words_str)
-
-    if num_words > max_words:
-        output['status'] = 8
-        output['message'] = 'Exceeded max words limit (' + str(max_words) + ')'
-        return output
-
-    db = db_init()
-
-    # count how many rows
-    query = 'SELECT count(word) FROM words;'
-    numrows = single_row_query(db, query)
-    if numrows is None or numrows < 1:
-        output['status'] = 9
-        output['message'] = 'Empty table or database connectivity error'
-    else:
-        int_set = '('
-        # build a set of random numbers between 1 and numrows
-        for x in range(num_words):
-            random_int = randint(1, numrows)
-            int_set += str(random_int) + ','
-        int_set = int_set[:-1] + ')'
-
-        # query words matching the random row numbers
-        query = 'SELECT word FROM words WHERE word_id IN ' + int_set
-
-    output = multi_row_query(db, query)
-    db.close()
-    return output
-
 # return 10 random fixed length words
 @get('/randomfixed/<num_words_str>')
 def randomfixed(num_words_str):
@@ -186,6 +151,42 @@ def randomfixed(length_str):
     db.close()
     return output
 '''
+
+@get('/random/<num_words_str>')
+def random(num_words_str):
+    set_headers()
+    output = {'words': [], 'count': 0, 'status': 0}
+
+    num_words = int(num_words_str)
+
+    if num_words > max_words:
+        output['status'] = 8
+        output['message'] = 'Exceeded max words limit (' + str(max_words) + ')'
+        return output
+
+    db = db_init()
+
+    # count how many rows
+    query = 'SELECT count(word) FROM words;'
+    numrows = single_row_query(db, query)
+    if numrows is None or numrows < 1:
+        output['status'] = 9
+        output['message'] = 'Empty table or database connectivity error'
+    else:
+        int_set = '('
+        # build a set of random numbers between 1 and numrows
+        for x in range(num_words):
+            random_int = randint(1, numrows)
+            int_set += str(random_int) + ','
+        int_set = int_set[:-1] + ')'
+
+        # query words matching the random row numbers
+        query = 'SELECT word FROM words WHERE word_id IN ' + int_set
+
+    output = multi_row_query(db, query)
+    db.close()
+    return output
+
 
 # simple test of layer connectivity
 @route('/test')
