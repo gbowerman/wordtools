@@ -4,4 +4,4 @@ docker-compose rm --force
 docker rmi sendmarsh/wordtools-data
 docker rmi sendmarsh/wordtools-api
 docker rmi sendmarsh/wordtools-presentation
-docker rmi --force $(docker ps -a -q)
+docker rmi --force \$(docker ps -a -q)

@@ -101,8 +101,8 @@ def finder(partial_word):
     return output
 
 
-# return 10 random fixed length words
-@get('/randomfixed/<num_words:int>/<length:int>')
+# returns random fixed length words
+@get('/rnd/<num_words:int>/<length:int>')
 def randomfixed(num_words, length):
     set_headers()
 
@@ -113,7 +113,7 @@ def randomfixed(num_words, length):
     db.close()
     return output
 
-
+# returns any random words
 @get('/random/<num_words:int>')
 def random(num_words):
     set_headers()
