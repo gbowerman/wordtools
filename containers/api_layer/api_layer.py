@@ -138,7 +138,7 @@ def random(num_words_str):
 
 # return 10 random fixed length words
 @get('/randomfixed/<num_words_str>')
-def random(num_words_str):
+def randomfixed(num_words_str):
     set_headers()
     output = {'words': [], 'count': 0, 'status': 0}
 
