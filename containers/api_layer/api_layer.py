@@ -105,6 +105,8 @@ def finder(partial_word):
 @get('/randomfixed/<length_str>')
 def randomfixed(length_str):
     set_headers()
+    output = {'words': ['debug test'], 'count': 1, 'status': 0}
+    return output
 
     num_words = '10'
     length = int(length_str)
