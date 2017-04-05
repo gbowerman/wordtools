@@ -2,9 +2,10 @@
 cd containers
 cd data_layer
 bash ./gen_word_data.sh
-docker build --no-cache -t sendmarsh/wordtools-data .
+docker build -t sendmarsh/wordtools-data .
 docker push sendmarsh/wordtools-data
 cd ../api_layer
+touch api_layer.py
 docker build --no-cache -t sendmarsh/wordtools_api .
 docker push sendmarsh/wordtools-api
 cd ../presentation_layer
