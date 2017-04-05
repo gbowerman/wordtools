@@ -152,7 +152,7 @@ def randomfixed(length_str):
     return output
 '''
 
-@get('/random/<num_words_str>')
+@get('/randomx/<num_words_str>')
 def random(num_words_str):
     set_headers()
     output = {'words': [], 'count': 0, 'status': 0}
