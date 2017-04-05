@@ -102,8 +102,8 @@ def finder(partial_word):
 
 
 # return 10 random fixed length words
-@get('/randomfixed/<num_words_str>')
-def randomfixed(num_words_str):
+@get('/fixedrnd/<num_words_str>')
+def fixedrnd(num_words_str):
     set_headers()
     output = {'words': [], 'count': 0, 'status': 0}
 
