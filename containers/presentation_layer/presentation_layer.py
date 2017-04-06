@@ -12,6 +12,8 @@ endpoint = 'http://wordtools-api:8081'  # api layer host/port set in compose fil
 last_anag = 'listen'
 last_search = 'am_s_ng'
 last_random = '10'
+last_wordlen = '5'
+last_rndrows = '10'
 status = ''
 
 
@@ -24,7 +26,8 @@ def process_word_packet(word_packet):
 
 
 def writebody(output):
-    return template('base', hostname=hostname, output=output, anagram=last_anag, search=last_search, random=last_random)
+    return template('base', hostname=hostname, output=output, anagram=last_anag, \
+        search=last_search, random=last_random, wordlen=last_wordlen, rndrows=last_rndrows)
 
 
 @route('/')
@@ -56,6 +59,7 @@ def finder():
     return writebody(body)
 
 
+# serve random words of any length
 @route('/random', method='POST')
 def random():
     global last_random
@@ -66,12 +70,19 @@ def random():
     last_random = numberstr
     return writebody(body)
 
-@route('/randomfixed', method='POST')
-def randomfixed():
+
+# serve random words of fixed length
+@route('/rnd', method='POST')
+def rnd():
+    global last_wordlen
+    global last_rndrows
     wordlen = request.forms.get('wordlen')
-    uri = '/randomfixed/' + wordlen
+    numberstr = request.forms.get('num')
+    uri = '/rnd/' + numberstr + '/' + wordlen
     word_packet = requests.get(endpoint + uri).json()
     body = process_word_packet(word_packet)
+    last_wordlen = wordlen
+    last_rndrows = numberstr
     return writebody(body)
 
 

@@ -31,10 +31,12 @@
     <tr>
      <td>
       <table>
-      <form method="post" action="/randomfixed">
+      <form method="post" action="/rnd">
         <tr>
+         <td>Number</td>
+         <td><input type="text" size="2" name="num" value={{rndrows}}></td>
          <td>Length</td>
-         <td><input type="text" size="2" name="wordlen" value="5"></td>
+         <td><input type="text" size="2" name="wordlen" value={{wordlen}}></td>
          <td align="right"><input type="submit" value="Fetch"></td>
         </tr>
       </form>
