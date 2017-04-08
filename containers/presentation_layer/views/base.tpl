@@ -24,7 +24,8 @@
      </td>
     </tr>
    </table>
-      <table border="1">
+   <br/><br/>
+   <table border="1">
     <tr>
      <td align="center">Random Fixed length</td>
     </tr>
@@ -62,6 +63,25 @@
     </td>
    </tr>
  </table>
+ <br/><br/><br/>
+  <table border="1">
+  <tr>
+    <td align="center">Password gen</td>
+  </tr>
+  <tr>
+    <td>
+    <table>
+    <form method="post" action="/pswd">
+      <tr>
+        <td>Number</td>
+        <td><input type="text" size="2" name="num" value={{pswd}}></td>
+        <td align="right"><input type="submit" value="Create"></td>
+      </tr>
+    </form>
+    </table>
+    </td>
+  </tr>
+  </table>
  </td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="top">
  <table border="1">
  <tr>
@@ -85,7 +105,11 @@
     <br/><br/>
     <table border="1"><tr><th>Word(s)</th></tr><tr><td>
     %for word in output:
-        <a href="https://en.wiktionary.org/wiki/{{word}}">{{word}}</a>
+        %if word.isalpha():
+            <a href="https://en.wiktionary.org/wiki/{{word}}">{{word}}</a>
+        %else:
+            {{word}}
+        %end
     %end
     </td></tr></table></ul>
 %else:
