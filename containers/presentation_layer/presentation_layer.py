@@ -66,7 +66,7 @@ def finder():
 
 # generate a set of memorable passwords
 @route('/pswd', method='POST')
-def random():
+def pswd():
     global last_pswd
     numberstr = request.forms.get('num')
     word_packet = {'words': [], 'count': 0, 'status': 0}
