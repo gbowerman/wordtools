@@ -106,9 +106,9 @@
     <table border="1"><tr><th>Word(s)</th></tr><tr><td>
     %for word in output:
         %if word.isalpha():
-            <p><a href="https://en.wiktionary.org/wiki/{{word}}">{{word}}</a></p>
+            <a href="https://en.wiktionary.org/wiki/{{word}}">{{word}}</a><br/>
         %else:
-            <p>{{word}}</p>
+            {{word}}<br/>
         %end
     %end
     </td></tr></table></ul>
