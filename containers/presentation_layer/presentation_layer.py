@@ -80,7 +80,7 @@ def pswd():
             # add a seperator to the words - To do: make seperator random char, or nothing
             passphrase += data_packet['words'][0] + ','
         # add a random number to the string
-        passphrase += str(randint(9999))
+        passphrase += str(randint(0,9999))
         word_packet['words'].append(passphrase)
         word_packet['count'] += 1
     body = process_word_packet(word_packet)
