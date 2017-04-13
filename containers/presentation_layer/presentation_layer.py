@@ -72,13 +72,17 @@ def pswd():
     word_packet = {'words': [], 'count': 0, 'status': 0}
     for i in range(int(numberstr)):
         passphrase = ''
-        for j in range(3):
+        for j in range(2):
             # get 1 word between 3 and 7 chars
             wordlen = randint(3, 7)
             uri = '/rnd/1/' + str(wordlen)
             data_packet = requests.get(ENDPOINT + uri).json()
+            word = data_packet['words'][0]
+            # capitalize 50 % of words
+            if randint(0, 1) == 0:
+                word = word.capitalize()    
             # add a seperator to the words - To do: make seperator random char, or nothing
-            passphrase += data_packet['words'][0] + ','
+            passphrase += word + ','
         # add a random number to the string
         passphrase += str(randint(0, 9999))
         word_packet['words'].append(passphrase)
