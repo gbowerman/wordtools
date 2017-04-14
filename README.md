@@ -1,10 +1,12 @@
 
 # Word finder
 
-This app provides web-based word finding tools, and consists of:
+A web-based collection of word finding tools, consisting of:
 - Database layer - an indexed word dictionary, implemented with MySQL.
 - API layer - providing word search, anagram, random word functions via a REST API, implemented with Python Bottle micro-web framework.
 - Presentation layer - web UI which calls the API layer, also implemented with Bottle.
+
+![Image of Wordtools web UI](./images/wordtools-ui.png)
 
 There are more efficient ways to load and index a dictionary style list of words than to use a database server, but the purpose of this app is to demonstrate a simple micro-service architecture. Each layer is implemented as a container, can be deployed as a set of inter-related containers in a pod, and scaled horizontally as needed.
 
