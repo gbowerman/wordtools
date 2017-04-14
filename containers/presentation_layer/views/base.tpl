@@ -8,7 +8,7 @@
    <table><tr><td>
    <table border="1">
     <tr>
-     <td align="center">Random Word Generator</td>
+     <td align="center">Random word generator</td>
     </tr>
     <tr>
      <td>
@@ -27,7 +27,7 @@
    <br/><br/>
    <table border="1">
     <tr>
-     <td align="center">Random Fixed length</td>
+     <td align="center">Random fixed length</td>
     </tr>
     <tr>
      <td>
@@ -48,6 +48,7 @@
   </td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="top">
   <table border="1">
    <tr>
+    <td align="center">Word finder</td>
    </tr>
    <tr>
     <td>
@@ -85,7 +86,7 @@
  </td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="top">
  <table border="1">
  <tr>
-  <td align="left">&nbsp;Anagram Solver</td>
+  <td align="left">&nbsp;Anagram solver</td>
  </tr><tr>
   <td>
    <table>
