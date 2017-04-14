@@ -24,7 +24,7 @@
      </td>
     </tr>
    </table>
-   <br/><br/><br/>
+   <br/>
    <table border="1">
     <tr>
      <td align="center">Random fixed length</td>
