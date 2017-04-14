@@ -5,7 +5,7 @@
   <ul>
    <h2>Word tools running on {{hostname}}</h2>
    <br/>
-   <table><tr><td>
+   <table><tr><td valign="top">
    <table border="1">
     <tr>
      <td align="center">Random word generator</td>
@@ -24,13 +24,13 @@
      </td>
     </tr>
    </table>
-   <br/><br/>
+   <br/><br/><br/>
    <table border="1">
     <tr>
      <td align="center">Random fixed length</td>
     </tr>
     <tr>
-     <td>
+     <td valign="top">
       <table>
       <form method="post" action="/rnd">
         <tr>
@@ -64,7 +64,7 @@
     </td>
    </tr>
  </table>
- <br/><br/><br/>
+ <br/><br/>
   <table border="1">
   <tr>
     <td align="center">Password gen</td>

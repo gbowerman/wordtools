@@ -1,6 +1,6 @@
 from bottle import error, request, route, run, template
 import json
-from random import randint
+from random import choice, randint
 import requests
 import socket
 
@@ -80,9 +80,9 @@ def pswd():
             word = data_packet['words'][0]
             # capitalize 50 % of words
             if randint(0, 1) == 0:
-                word = word.capitalize()    
-            # add a seperator to the words - To do: make seperator random char, or nothing
-            passphrase += word + ','
+                word = word.capitalize()
+            # add a random non-alpha seperator to the words
+            passphrase += word + choice(',+-()#.@[]{}#_')
         # add a random number to the string
         passphrase += str(randint(0, 9999))
         word_packet['words'].append(passphrase)
