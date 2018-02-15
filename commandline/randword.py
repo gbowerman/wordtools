@@ -27,8 +27,7 @@ def random_indexes(count, num_words):
     '''returns the requested count of random ints between 0 and < num_words'''
     index_array = []
     for _ in range(count):
-        random_num = random.randint(0, num_words - 1)
-        index_array.append(random_num)
+        index_array.append(random.randint(0, num_words - 1))
     return index_array
 
 
