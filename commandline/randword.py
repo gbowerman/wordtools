@@ -36,35 +36,22 @@ def main():
     '''Main routine. Start by parsing args..'''
     arg_parser = argparse.ArgumentParser()
     arg_parser.add_argument(
-        '--count', '-n', action='store', type=int, help='Number of words')
+        '--count', '-n', action='store', type=int, default=COUNT, help='Number of words')
     arg_parser.add_argument(
-        '--minlen', '-min', action='store',  type=int, help='minimum word length')
+        '--minlen', '-min', action='store', type=int, default=MINLEN, help='minimum word length')
     arg_parser.add_argument(
         '--maxlen', '-max', action='store',  type=int, help='maximum word length')
     arg_parser.add_argument(
-        '--wordfile', '-f', action='store', help='wordfile')
+        '--wordfile', '-f', action='store', default=WORDFILE, help='wordfile')
 
     args = arg_parser.parse_args()
-    if args.count is None:
-        count = COUNT
-    else:
-        count = args.count
-    if args.minlen is None:
-        minlen = MINLEN
-    else:
-        minlen = args.minlen
-    if args.wordfile is None:
-        wordfile = WORDFILE
-    else:
-        wordfile = args.wordfile
-    maxlen = args.maxlen
 
     # load words from a file into a Python list
-    wordlist = load_words(wordfile, minlen, maxlen)
+    wordlist = load_words(args.wordfile, args.minlen, args.maxlen)
     total_words = len(wordlist)
 
     # print out random words from the list
-    index_array = random_indexes(count, total_words)
+    index_array = random_indexes(args.count, total_words)
     for index in index_array:
         print(wordlist[index])
     print('..out of ' + str(total_words) + ' possible words.')
