@@ -41,19 +41,35 @@ def main():
     arg_parser.add_argument(
         '--maxlen', '-max', action='store',  type=int, help='maximum word length')
     arg_parser.add_argument(
+        '--password', '-p', action='store_true', default=False, help='generate password')
+    arg_parser.add_argument(
         '--wordfile', '-f', action='store', default=WORDFILE, help='wordfile')
 
     args = arg_parser.parse_args()
 
+    # set a default low value for maxlen if generating a pass phrase and it's not set
+    if args.password is True and args.maxlen is None:
+        args.maxlen = 5
+    
     # load words from a file into a Python list
     wordlist = load_words(args.wordfile, args.minlen, args.maxlen)
     total_words = len(wordlist)
+    
+    # select random word indexes
+    index_array = random_indexes(args.count, total_words)
 
     # print out random words from the list
-    index_array = random_indexes(args.count, total_words)
     for index in index_array:
-        print(wordlist[index])
-    print('..out of ' + str(total_words) + ' possible words.')
+        if args.password is True:
+            sys.stdout.write(wordlist[index])
+            # to do: add random punctuation/integer here
+        else:
+            print(wordlist[index])
+    
+    if args.password is False:
+        print('..out of ' + str(total_words) + ' possible words.')
+    else:
+        print('\n..out of approx ' + str(total_words ** args.count) + ' combinations.')
 
 
 if __name__ == "__main__":
