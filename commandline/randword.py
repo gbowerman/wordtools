@@ -62,7 +62,7 @@ def main():
     for index in index_array:
         if args.password is True:
             sys.stdout.write(wordlist[index])
-            # to do: add random punctuation/integer here
+            # to do: add random punctuation/uppercase/integer here
         else:
             print(wordlist[index])
     
