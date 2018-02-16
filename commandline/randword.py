@@ -7,6 +7,7 @@ import sys
 COUNT = 3
 MINLEN = 3
 WORDFILE = 'words.txt'
+PUNC = ',+-#.@#_'
 
 
 def load_words(wordfile, minlen, maxlen):
@@ -63,13 +64,16 @@ def main():
         if args.password is True:
             sys.stdout.write(wordlist[index])
             # to do: add random punctuation/uppercase/integer here
+            sys.stdout.write(random.choice(PUNC))
         else:
             print(wordlist[index])
     
     if args.password is False:
         print('..out of ' + str(total_words) + ' possible words.')
     else:
-        print('\n..out of approx ' + str(total_words ** args.count) + ' combinations.')
+        # add a random number to the end of password
+        sys.stdout.write(str(random.randint(0,99)))
+        print('\n..out of approx ' + str(total_words ** args.count * (len(PUNC) ** args.count) * 100) + ' combinations.')
 
 
 if __name__ == "__main__":
