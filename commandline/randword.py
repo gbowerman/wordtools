@@ -1,7 +1,8 @@
-'''Random word tool - display random dictionary words'''
+'''Random word tool - display random dictionary words, generate password'''
 import argparse
 import random
 import sys
+# import time
 
 # defaults
 COUNT = 3
@@ -24,12 +25,22 @@ def load_words(wordfile, minlen, maxlen):
     return wordlist
 
 
-def random_indexes(count, num_words):
-    '''returns the requested count of random ints between 0 and < num_words'''
-    index_array = []
+def random_words(count, wordlist):
+    '''return the requested number of random words from a word list'''
+    rand_words = []
     for _ in range(count):
-        index_array.append(random.randint(0, num_words - 1))
-    return index_array
+        rand_words.append(random.choice(wordlist))
+    return rand_words
+
+
+def gen_passphrase(word_array):
+    '''generate a password from a word list, adding random punctuation and numerals'''
+    passphrase = ''
+    for word in word_array:
+        passphrase += word + random.choice(PUNC)
+    # add a random number to the end of password
+    passphrase += str(random.randint(0, 99))
+    return passphrase
 
 
 def main():
@@ -48,32 +59,32 @@ def main():
 
     args = arg_parser.parse_args()
 
-    # set a default low value for maxlen if generating a pass phrase and it's not set
+    # set a default low value for maxlen if generating a pass phrase and it's
+    # not set
     if args.password is True and args.maxlen is None:
         args.maxlen = 5
-    
+
     # load words from a file into a Python list
     wordlist = load_words(args.wordfile, args.minlen, args.maxlen)
     total_words = len(wordlist)
-    
-    # select random word indexes
-    index_array = random_indexes(args.count, total_words)
 
-    # print out random words from the list
-    for index in index_array:
-        if args.password is True:
-            sys.stdout.write(wordlist[index])
-            # to do: add random punctuation/uppercase/integer here
-            sys.stdout.write(random.choice(PUNC))
-        else:
-            print(wordlist[index])
-    
-    if args.password is False:
-        print('..out of ' + str(total_words) + ' possible words.')
+    # time execution
+    # start_time = time.time()
+
+    # select random words
+    word_array = random_words(args.count, wordlist)
+
+    if args.password is True:
+        print(gen_passphrase(word_array))
+        print('\n..out of approx ' + str(total_words ** args.count *
+                                         (len(PUNC) ** args.count) * 100) + ' combinations.')
     else:
-        # add a random number to the end of password
-        sys.stdout.write(str(random.randint(0,99)))
-        print('\n..out of approx ' + str(total_words ** args.count * (len(PUNC) ** args.count) * 100) + ' combinations.')
+        # list of words
+        print('\n'.join(word_array))
+        print('..out of ' + str(total_words) + ' possible words.')
+
+    # end_time = time.time()
+    # print('Execution time: ' + str(end_time - start_time))
 
 
 if __name__ == "__main__":
