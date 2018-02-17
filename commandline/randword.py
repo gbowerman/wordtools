@@ -37,6 +37,9 @@ def gen_passphrase(word_array):
     '''generate a password from a word list, adding random punctuation and numerals'''
     passphrase = ''
     for word in word_array:
+        # randomly capitalize
+        if bool(random.getrandbits(1)):
+            word = word.capitalize()
         passphrase += word + random.choice(PUNC)
     # add a random number to the end of password
     passphrase += str(random.randint(0, 99))
@@ -59,12 +62,11 @@ def main():
 
     args = arg_parser.parse_args()
 
-    # set a default low value for maxlen if generating a pass phrase and it's
-    # not set
+    # set default low val for maxlen if generating passphrase and not set
     if args.password is True and args.maxlen is None:
         args.maxlen = 5
 
-    # load words from a file into a Python list
+    # load words from a file into a list
     wordlist = load_words(args.wordfile, args.minlen, args.maxlen)
     total_words = len(wordlist)
 
@@ -76,8 +78,10 @@ def main():
 
     if args.password is True:
         print(gen_passphrase(word_array))
-        print('\n..out of approx ' + str(total_words ** args.count *
-                                         (len(PUNC) ** args.count) * 100) + ' combinations.')
+        # entropy depends on word range & number, punctuation, capitalization, numeric etc.
+        # remember to update entropy calculation if modifying gen_passphrase()
+        entropy = total_words ** args.count * (len(PUNC) ** args.count) * (2 ** args.count) * 100
+        print('\n..out of approx ' + '{:,}'.format(entropy) + ' combinations.')
     else:
         # list of words
         print('\n'.join(word_array))
