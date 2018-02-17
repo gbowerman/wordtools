@@ -40,6 +40,16 @@ def gen_passphrase(word_array):
         # randomly capitalize
         if bool(random.getrandbits(1)):
             word = word.capitalize()
+        # randomly replace letter with number
+        if bool(random.getrandbits(1)):
+            if 'o' in word:
+                word = word.replace('o', '0')
+            elif 'i' in word:
+                word = word.replace('i', '1')
+            elif 'e' in word:
+                word = word.replace('e', '3')
+            elif 's' in word:
+                word = word.replace('s', '5')
         passphrase += word + random.choice(PUNC)
     # add a random number to the end of password
     passphrase += str(random.randint(0, 99))
@@ -80,7 +90,7 @@ def main():
         print(gen_passphrase(word_array))
         # entropy depends on word range & number, punctuation, capitalization, numeric etc.
         # remember to update entropy calculation if modifying gen_passphrase()
-        entropy = total_words ** args.count * (len(PUNC) ** args.count) * (2 ** args.count) * 100
+        entropy = total_words ** args.count * (len(PUNC) ** args.count) * (2 ** args.count) * (2 ** args.count) * 100
         print('\n..out of approx ' + '{:,}'.format(entropy) + ' combinations.')
     else:
         # list of words

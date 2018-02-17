@@ -1,5 +1,13 @@
+# Word tools
+This repo consists of a command line tool to generate random words and passphrases, and a container based app that provides word searching operations.
 
-# Word finder
+The command line password generator aims to useful, the container based app was more of an exercise to learn containers, and is not currently being maintained.
+
+## randword.py
+See [commandline](./commandline)
+Command line tool that loads a word list into memory, and prints random words with optional min/max values. It can also generate a relatively easy to remember pass phrase of high entropy.
+
+## Word finder - not maintained
 
 A web-based collection of word finding tools, consisting of:
 - Database layer - an indexed word dictionary, implemented with MySQL.
@@ -8,7 +16,7 @@ A web-based collection of word finding tools, consisting of:
 
 ![Image of Wordtools web UI](./images/wordtools-ui.png)
 
-There are more efficient ways to load and index a dictionary style list of words than to use a database server, but the purpose of this app is to demonstrate a simple micro-service architecture. Each layer is implemented as a container, can be deployed as a set of inter-related containers in a pod, and scaled horizontally as needed.
+There are more efficient ways to load and index a dictionary style list of words than to use a database server, but the purpose of this app was to demonstrate a simple micro-service architecture. Each layer is implemented as a container, can be deployed as a set of inter-related containers in a pod, and scaled horizontally as needed.
 
 To run the app you can simply download _docker-compose.yml_ and run _docker-compose up -d_ to get the containers from Docker Hub and run them. Alternatively you can adapt the build script and Dockerfiles for your own purposes and create your own app.
 

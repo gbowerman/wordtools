@@ -9,18 +9,19 @@ Returns the requested number of random words, optionally specifying min and max 
 
 ```
 usage: randword.py [-h] [--count COUNT] [--minlen MINLEN] [--maxlen MAXLEN]
-                   [--wordfile WORDFILE]
+                   [--password] [--wordfile WORDFILE]
 
 optional arguments:
   -h, --help            show this help message and exit
   --count COUNT, -n COUNT
-                        Number of words - default 3
+                        Number of words
   --minlen MINLEN, -min MINLEN
-                        minimum word length - default 3
+                        minimum word length
   --maxlen MAXLEN, -max MAXLEN
-                        maximum word length - default None
+                        maximum word length
+  --password, -p        generate password
   --wordfile WORDFILE, -f WORDFILE
-                        wordfile - default words.txt
+                        wordfile
 
 Examples:
 
@@ -42,10 +43,26 @@ bagwash
 ouriest
 ..out of 55713 possible words.
 
+# generate a passphrase based on 3 random words:
+c:\>python randword.py -p
+Neat,lank_Banco#64
+..out of approx 24,267,170,589,861,478,400 combinations.
+
+# generate a passphrase based on 2 words:
+c:\>python randword.py -p -n 2
+tyin#gle1s@77
+..out of approx 38,905,657,753,600 combinations.
+
+# generate a passphrase based on 3 words no longer than 4 letters each:
+c:\>python randword.py -p -max 4
+du3d-brit+Sus.19
+..out of approx 1,048,160,395,981,619,200 combinations.
 ```
 
 ### Installation
 Expects a line separated word file called 'words.txt' in the current directory.
 
-On Windows versions which support _curl_ you can use the _get_words.bat_ file to download one.
+The word file used in the examples above was downloaded with thanks from the excellent [atebits/Words](https://github.com/atebits/Words) repo.
+
+Use the _get_words.bat_ script to download it. This script uses curl. Make sure curl is in your path. Convert the script from .bat to .sh to run on Linux.
  
