@@ -60,7 +60,9 @@ def main():
     '''Main routine. Start by parsing args..'''
     arg_parser = argparse.ArgumentParser()
     arg_parser.add_argument(
-        '--count', '-n', action='store', type=int, default=COUNT, help='Number of words')
+        '--count', '-n', action='store', type=int, default=COUNT, help='Number of random words')
+    arg_parser.add_argument(
+        '--repeat', '-r', action='store', type=int, default=1, help='Number of pass phrases to gnerate')
     arg_parser.add_argument(
         '--minlen', '-min', action='store', type=int, default=MINLEN, help='minimum word length')
     arg_parser.add_argument(
@@ -83,17 +85,17 @@ def main():
     # time execution
     # start_time = time.time()
 
-    # select random words
-    word_array = random_words(args.count, wordlist)
-
-    if args.password is True:
-        print(gen_passphrase(word_array))
+    if args.password is True: # generate pass phrase
+        for _ in range(args.repeat):
+            word_array = random_words(args.count, wordlist)
+            print(gen_passphrase(word_array))
         # entropy depends on word range & number, punctuation, capitalization, numeric etc.
         # remember to update entropy calculation if modifying gen_passphrase()
         entropy = total_words ** args.count * (len(PUNC) ** args.count) * (2 ** args.count) * (2 ** args.count) * 100
         print('\n..out of approx ' + '{:,}'.format(entropy) + ' combinations.')
     else:
         # list of words
+        word_array = random_words(args.count, wordlist)
         print('\n'.join(word_array))
         print('..out of ' + str(total_words) + ' possible words.')
 
