@@ -5,7 +5,7 @@ import sys
 # import time
 
 # defaults
-COUNT = 3
+COUNT = 2
 MINLEN = 3
 WORDFILE = 'words.txt'
 PUNC = ',+-#.@#_'

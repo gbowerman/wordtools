@@ -51,17 +51,17 @@ Neat,lank_Banco#64
 ..out of approx 24,267,170,589,861,478,400 combinations.
 
 # generate a passphrase based on 2 words:
-c:\>python randword.py -p -n 2
+c:\>python randword.py -p
 tyin#gle1s@77
 ..out of approx 38,905,657,753,600 combinations.
 
 # generate a passphrase based on 3 words no longer than 4 letters each:
-c:\>python randword.py -p -max 4
+c:\>python randword.py -p -n 3 -max 4
 du3d-brit+Sus.19
 ..out of approx 1,048,160,395,981,619,200 combinations.
 
 # generate 5 passphrases, each based on 2 random words:
-c:\>python randword.py -r 5 -p -n 2
+c:\>python randword.py -r 5 -p
 chips@b0ll#94
 Hobs+areas@83
 Conns@Y3lms.43
