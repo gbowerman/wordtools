@@ -77,4 +77,53 @@ Expects a line separated word file called 'words.txt' in the current directory.
 The word file used in the examples above was downloaded with thanks from the excellent [atebits/Words](https://github.com/atebits/Words) repo.
 
 Use the _get_words.bat_ script to download it. This script uses curl. Make sure curl is in your path. Convert the script from .bat to .sh to run on Linux.
- 
+
+
+## Renamer
+File renaming tool - not a 'wordtool' but leaving it here until I create a file tools repo
+
+### Usage
+
+```
+usage: renamer.py [-h] --ext EXT [--remove REMOVE] [--trunc TRUNC] [--pre PRE]
+                  [--append APPEND]
+renamer.py: error: the following arguments are required: --ext/-e
+```
+### Examples
+```
+# remove the string 'test' from every MP3 file in the current folder
+python .\renamer.py --remove test --ext mp3
+Renaming "nametest1.mp3" to "name1.mp3".
+Renaming "nametest2.mp3" to "name2.mp3".
+Renaming "nametest3.mp3" to "name3.mp3".
+Renaming "nametest4.mp3" to "name4.mp3".
+Renaming "nametest5.mp3" to "name5.mp3".
+5 files renamed.
+
+# Add the string 'thisis' to the beginning, and truncate 'file' from the end of all MP3 files in the current folder..
+python .\renamer.py --ext mp3 --pre thisis --trunc file
+Renaming "mytest1file.mp3" to "thisismytest1.mp3".
+Renaming "mytest2file.mp3" to "thisismytest2.mp3".
+Renaming "mytest3file.mp3" to "thisismytest3.mp3".
+Renaming "mytest4file.mp3" to "thisismytest4.mp3".
+Renaming "mytest5file.mp3" to "thisismytest5.mp3".
+5 files renamed.
+
+# append the string 'file' to the end of all MP3 files in the current folder..
+python .\renamer.py --ext mp3 --append file
+Renaming "thisismytest1.mp3" to "thisismytest1file.mp3".
+Renaming "thisismytest2.mp3" to "thisismytest2file.mp3".
+Renaming "thisismytest3.mp3" to "thisismytest3file.mp3".
+Renaming "thisismytest4.mp3" to "thisismytest4file.mp3".
+Renaming "thisismytest5.mp3" to "thisismytest5file.mp3".
+5 files renamed.
+
+# truncate all MP3 files in current folder from last 'f'
+python .\renamer.py --ext mp3 --trunc f
+Renaming "thisismytest1file.mp3" to "thisismytest1.mp3".
+Renaming "thisismytest2file.mp3" to "thisismytest2.mp3".
+Renaming "thisismytest3file.mp3" to "thisismytest3.mp3".
+Renaming "thisismytest4file.mp3" to "thisismytest4.mp3".
+Renaming "thisismytest5file.mp3" to "thisismytest5.mp3".
+5 files renamed.
+```
