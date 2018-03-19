@@ -1,9 +1,4 @@
 '''renamer - tool to rename file names'''
-'''
---ext [rename all files with this extension]
---remove [remove this string]
---trunc [remove from last occurrence of this string up to extension]
-'''
 import argparse
 import glob
 import os
@@ -21,8 +16,9 @@ def rename_file(old_name, ext, remove, replace, trunc, pre, append):
     if replace is not None:
         working_name = working_name.replace(replace[0], replace[1])    
     if trunc is not None:
-        idx = working_name.rfind(trunc)
-        working_name = working_name[:idx]
+        idx = working_name.lower().rfind(trunc.lower())
+        if idx >= 0:
+            working_name = working_name[:idx]
     if pre is not None:
         working_name = ''.join([pre, working_name])
     if append is not None:
