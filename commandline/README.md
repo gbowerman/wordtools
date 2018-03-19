@@ -85,9 +85,9 @@ File renaming tool - not a 'wordtool' but leaving it here until I create a file 
 ### Usage
 
 ```
-usage: renamer.py [-h] --ext EXT [--remove REMOVE] [--trunc TRUNC] [--pre PRE]
-                  [--append APPEND]
-renamer.py: error: the following arguments are required: --ext/-e
+usage: renamer.py [-h] --ext EXT [--remove REMOVE] [--replace REPLACE REPLACE]
+                  [--trunc TRUNC] [--pre PRE] [--append APPEND]
+                  the following arguments are required: --ext/-e
 ```
 ### Examples
 ```
@@ -126,4 +126,13 @@ Renaming "thisismytest3file.mp3" to "thisismytest3.mp3".
 Renaming "thisismytest4file.mp3" to "thisismytest4.mp3".
 Renaming "thisismytest5file.mp3" to "thisismytest5.mp3".
 5 files renamed.
+
+# replace all the matching strings in the MP3 files in this folder
+python .\renamer.py --replace name file --ext mp3
+Renaming "name1.mp3" to "file1.mp3".
+Renaming "name2.mp3" to "file2.mp3".
+Renaming "name3.mp3" to "file3.mp3".
+Renaming "name4.mp3" to "file4.mp3".
+Renaming "name5.mp3" to "file5.mp3".
+5 files renamed. 
 ```
