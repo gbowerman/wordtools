@@ -5,8 +5,10 @@ import os
 
 count = 0
 
+
 def rename_file(old_name, ext, remove, replace, trunc, pre, append):
-    # remove extension from name
+    '''Apply the specified set of changes to the file name and call os.rename()'''
+    # temporarily remove extension from name
     extn_len = 0 - (len(ext) + 1)
     working_name = old_name[:extn_len]
     
@@ -53,9 +55,16 @@ def main():
     args = arg_parser.parse_args()
 
     count = 0
-    for filename in glob.glob('*.' + args.ext):
-        if rename_file(filename, args.ext, args.remove, args.replace, args.trunc, args.pre, args.append) is True:
-            count += 1
+    # support a generic 'vid' extension which encompasses mkv, mp4 and avi (add others here as needed)
+    if args.ext == 'vid':
+        for ext in ['mkv', 'mp4', 'avi']:
+            for filename in glob.glob('*.' + ext):
+                if rename_file(filename, ext, args.remove, args.replace, args.trunc, args.pre, args.append) is True:
+                    count += 1
+    else:
+        for filename in glob.glob('*.' + args.ext):
+            if rename_file(filename, args.ext, args.remove, args.replace, args.trunc, args.pre, args.append) is True:
+                count += 1
 
     print(str(count) + ' files renamed.')
 
