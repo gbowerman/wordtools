@@ -136,3 +136,23 @@ Renaming "name4.mp3" to "file4.mp3".
 Renaming "name5.mp3" to "file5.mp3".
 5 files renamed. 
 ```
+
+## morse.py
+Alphanumeric to Morse code conversion tool
+
+Doesn't handle punctuation yet.
+
+### Usage
+python morse.py 'string to convert'
+### Examples
+```
+python .\morse.py 'here is some text and some numbers 1234567890'
+· · · ·   ·   · – ·   ·
+· ·   · · ·
+· · ·   – – –   – –   ·
+–   ·   – · · –   –
+· –   – ·   – · ·
+· · ·   – – –   – –   ·
+– ·   · · –   – –   – · · ·   ·   · – ·   · · ·
+· – – – –   · · – – –   · · · – –   · · · · –   · · · · ·   – · · · ·   – – · · ·   – – – · ·   – – – – ·   – – – – –
+```
