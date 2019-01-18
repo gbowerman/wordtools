@@ -1,11 +1,15 @@
 # Word tools
-This repo consists of a command line tool to generate random words and passphrases, and a container based app that provides word searching operations.
+This repo consists of command line toola to generate random words and passphrases, and to find partial words and anagrams. 
 
-The command line password generator aims to useful, the container based app was more of an exercise to learn containers, and is not currently being maintained.
+The command line tools aim to be useful, the container based app was more of an exercise to learn containers, and is not being maintained.
 
 ## randword.py
 See [commandline](./commandline)
 Command line tool that loads a word list into memory, and prints random words with optional min/max values. It can also generate a relatively easy to remember pass phrase of high entropy.
+
+## wordfind.py
+See [commandline](./commandline)
+Command line tool that loads a word list into memory, takes a partial work like p?rt?al and displays matching words. It can also show one-word anagrams of a string.
 
 ## Word finder - not maintained
 
@@ -20,7 +24,7 @@ There are more efficient ways to load and index a dictionary style list of words
 
 To run the app you can simply download _docker-compose.yml_ and run _docker-compose up -d_ to get the containers from Docker Hub and run them. Alternatively you can adapt the build script and Dockerfiles for your own purposes and create your own app.
 
-### Installation
+### Installation of container app
 
 Tested on an Ubuntu 16.04-LTS VM. 
 
